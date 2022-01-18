@@ -40,10 +40,17 @@ const resolvers = {
     author: ({ authorId }, _, { dataSources }) => {
       return dataSources.trackAPI.getAuthor(authorId);
     },
+    //access the length value using the first parameter of the resolver, the parent, because of the resolver chain.
+    durationInSeconds: ({ length }) => length,
 
     modules: ({ id }, _, { dataSources }) => {
       return dataSources.trackAPI.getTrackModules(id);
     },
+
+  },
+  Module: {
+    //access the length value using the first parameter of the resolver, the parent, because of the resolver chain.
+    durationInSeconds: ({ length }) => length,
   },
 };
 
